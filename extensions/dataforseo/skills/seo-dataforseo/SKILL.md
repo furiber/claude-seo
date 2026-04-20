@@ -11,13 +11,12 @@ description: >
   or "real search data".
 user-invokable: true
 argument-hint: "[command] [query]"
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
+license: MIT
+compatibility: "Requires DataForSEO MCP server"
+metadata:
+  author: AgriciDaniel
+  version: "1.6.1"
+  category: seo
 ---
 
 # DataForSEO: Live SEO Data (Extension)

@@ -8,13 +8,11 @@ description: >
   "generated pages", or "data-driven SEO".
 user-invokable: true
 argument-hint: "[url or plan]"
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
+license: MIT
+metadata:
+  author: AgriciDaniel
+  version: "1.9.0"
+  category: seo
 ---
 
 # Programmatic SEO Analysis & Planning

@@ -12,13 +12,11 @@ description: >
   or "local search".
 user-invokable: true
 argument-hint: "[url]"
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
+license: MIT
+metadata:
+  author: AgriciDaniel
+  version: "1.9.0"
+  category: seo
 ---
 
 # Local SEO Analysis (March 2026)
