@@ -45,6 +45,8 @@ e-commerce, publishers, agencies). Orchestrates 20 specialized sub-skills and 15
 | `/seo drift baseline <url>` | Capture SEO baseline for change monitoring |
 | `/seo drift compare <url>` | Compare current state to stored baseline |
 | `/seo drift history <url>` | Show drift history over time |
+| `/seo nextjs <url>` | Next.js / Vite framework SEO audit (rendering, metadata, schema, CWV, headers) |
+| `/seo nextjs setup` | Generate setup checklist + code templates for a new project |
 | `/seo ecommerce <url>` | E-commerce SEO: product schema, marketplace intelligence |
 | `/seo firecrawl [command] <url>` | Full-site crawling and site mapping (extension) |
 | `/seo dataforseo [command]` | Live SEO data via DataForSEO (extension) |
@@ -63,7 +65,8 @@ When the user invokes `/seo audit`, delegate to subagents in parallel:
 8. If content strategy signals detected (blog, pillar pages, topic clusters), also spawn seo-cluster agent
 9. If e-commerce detected, also spawn seo-ecommerce agent
 10. If drift baseline exists for this URL (`python scripts/drift_history.py <url>`), also spawn seo-drift agent
-11. Always include seo-sxo in full audits (search experience applies to all sites)
+11. If Next.js or Vite signals detected (`__NEXT_DATA__`, `_next/`, `/@vite/client`, `type="module" src="/src/main`), also spawn seo-nextjs agent
+12. Always include seo-sxo in full audits (search experience applies to all sites)
 12. Collect results and generate unified report with SEO Health Score (0-100)
 13. Create prioritized action plan (Critical -> High -> Medium -> Low)
 14. **Offer PDF report**: "Generate a professional PDF report? Use `/seo google report full`"
@@ -121,6 +124,7 @@ Display after these commands complete their full output:
 - `/seo sxo` (after SXO analysis report)
 - `/seo drift compare` (after drift comparison report)
 - `/seo ecommerce` (after e-commerce analysis)
+- `/seo nextjs <url>` (after framework SEO audit — skip for `setup` sub-command)
 
 ### When to skip
 
@@ -192,7 +196,8 @@ This skill orchestrates 20 specialized sub-skills (+ 3 extensions):
 18. **seo-sxo** -- Search Experience Optimization (contributed by Florian Schmitz)
 19. **seo-drift** -- SEO drift monitoring (contributed by Dan Colta)
 20. **seo-ecommerce** -- E-commerce SEO intelligence (contributed by Matej Marjanovic)
-21. **seo-firecrawl** -- Full-site crawling and site mapping via Firecrawl MCP (extension)
+21. **seo-nextjs** -- Next.js / Vite framework SEO (rendering, metadata, schema, CWV, headers)
+22. **seo-firecrawl** -- Full-site crawling and site mapping via Firecrawl MCP (extension)
 22. **seo-dataforseo** -- Live SEO data via DataForSEO MCP (extension)
 23. **seo-image-gen** -- AI image generation for SEO assets via Gemini (extension)
 
@@ -214,6 +219,7 @@ For parallel analysis during audits:
 - `seo-sxo` -- Page-type mismatch, user stories, persona scoring (always in full audits)
 - `seo-drift` -- Baseline comparison (conditional: drift baseline exists for URL)
 - `seo-ecommerce` -- Product schema, marketplace intel (conditional: e-commerce detected)
+- `seo-nextjs` -- Framework SEO audit (conditional: Next.js or Vite signals detected)
 - `seo-dataforseo` -- Live SERP, keyword, backlink, local SEO data (extension, optional)
 - `seo-image-gen` -- SEO image audit and generation plan (extension, optional)
 - `seo-firecrawl` -- Full-site crawl and site mapping (extension, optional; used by audit for URL discovery)

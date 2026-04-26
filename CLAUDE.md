@@ -4,8 +4,8 @@
 
 This repository contains **Claude SEO**, a Tier 4 Claude Code skill for comprehensive
 SEO analysis across all industries. It follows the Agent Skills open standard and the
-3-layer architecture (directive, orchestration, execution). 20 core sub-skills (+ 3
-extensions), 15 core subagents (+ 2 extension agents, 17 total), and an extensible reference
+3-layer architecture (directive, orchestration, execution). 21 core sub-skills (+ 3
+extensions), 16 core subagents (+ 2 extension agents, 18 total), and an extensible reference
 system cover technical SEO, content quality,
 schema markup, image optimization, sitemap architecture, AI search optimization,
 local SEO (GBP, citations, reviews, map pack), maps intelligence, semantic topic
@@ -22,7 +22,7 @@ claude-seo/
   .claude-plugin/
     plugin.json                    # Plugin manifest (v1.9.0)
     marketplace.json               # Marketplace catalog for distribution
-  skills/                            # 23 skills (auto-discovered)
+  skills/                            # 24 skills (auto-discovered)
     seo/                           # Main orchestrator skill
       SKILL.md                     # Entry point, routing table, core rules
       references/                  # On-demand knowledge files (12 files)
@@ -57,11 +57,14 @@ claude-seo/
     seo-ecommerce/               # E-commerce SEO (v1.9.0, by Matej Marjanovic)
       SKILL.md
       references/                # Marketplace API endpoints
+    seo-nextjs/                  # Next.js / Vite framework SEO (v1.0.0)
+      SKILL.md
+      references/                # Checklist + code patterns (2 files)
     seo-dataforseo/SKILL.md     # Live SEO data via DataForSEO MCP (extension mirror)
     seo-image-gen/              # AI image generation for SEO assets (extension mirror)
       SKILL.md
       references/                # Image gen reference files (7 files)
-  agents/                          # 17 subagents (auto-discovered)
+  agents/                          # 18 subagents (auto-discovered)
     seo-technical.md             # Crawlability, indexability, security
     seo-content.md               # E-E-A-T, readability, thin content
     seo-schema.md                # Structured data validation
@@ -79,6 +82,7 @@ claude-seo/
     seo-sxo.md                   # Search experience optimization
     seo-drift.md                 # SEO drift monitoring
     seo-ecommerce.md             # E-commerce SEO analysis
+    seo-nextjs.md                # Next.js / Vite framework SEO analysis
   hooks/                           # Quality gate hooks
     hooks.json                   # PostToolUse schema validation
   scripts/                         # Python execution scripts (28 tracked + 2 dev-only)
@@ -146,6 +150,8 @@ claude-seo/
 | `/seo drift compare <url>` | Compare current state to stored baseline |
 | `/seo drift history <url>` | Show drift history over time |
 | `/seo ecommerce <url>` | E-commerce SEO: product schema, marketplace intelligence |
+| `/seo nextjs <url>` | Next.js / Vite framework SEO audit (rendering, metadata, schema, CWV) |
+| `/seo nextjs setup` | Generate SEO setup checklist + code templates for a new project |
 | `/seo firecrawl [command] <url>` | Full-site crawling and site mapping (extension) |
 | `/seo dataforseo [command]` | Live SEO data via DataForSEO MCP (extension) |
 | `/seo image-gen [use-case] <desc>` | AI image generation for SEO assets (extension) |
